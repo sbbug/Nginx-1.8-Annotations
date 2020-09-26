@@ -19,7 +19,7 @@
  */
 #define NGX_MAX_ALLOC_FROM_POOL  (ngx_pagesize - 1)
 
-#define NGX_DEFAULT_POOL_SIZE    (16 * 1024)
+#define NGX_DEFAULT_POOL_SIZE    (16 * 1024) //默认大小16KB
 
 #define NGX_POOL_ALIGNMENT       16
 #define NGX_MIN_POOL_SIZE                                                     \
@@ -53,7 +53,7 @@ typedef struct {
     ngx_uint_t            failed;
 } ngx_pool_data_t;
 
-
+//内存池结构
 struct ngx_pool_s {
     ngx_pool_data_t       d;
     size_t                max;
@@ -71,15 +71,18 @@ typedef struct {
     ngx_log_t            *log;
 } ngx_pool_cleanup_file_t;
 
-
+//创建一个内存池并返回
 ngx_pool_t *ngx_create_pool(size_t size, ngx_log_t *log);
+//销毁内存池
 void ngx_destroy_pool(ngx_pool_t *pool);
+//重置内存池
 void ngx_reset_pool(ngx_pool_t *pool);
-
+//从内存池中分配size大小内存
 void *ngx_palloc(ngx_pool_t *pool, size_t size);
 void *ngx_pnalloc(ngx_pool_t *pool, size_t size);
 void *ngx_pcalloc(ngx_pool_t *pool, size_t size);
 void *ngx_pmemalign(ngx_pool_t *pool, size_t size, size_t alignment);
+//释放内存池数据
 ngx_int_t ngx_pfree(ngx_pool_t *pool, void *p);
 
 
