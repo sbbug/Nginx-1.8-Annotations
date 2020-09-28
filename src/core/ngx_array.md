@@ -52,4 +52,5 @@
     #define ngx_inline      inline //内联关键字别名
     inline可以修饰方法和变量
     
-#### 转 ngx_palloc 内存池
+#### 
+#### [转 ngx_palloc 内存池](./ngx_palloc.md)
